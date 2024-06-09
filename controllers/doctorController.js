@@ -91,7 +91,7 @@ exports.editOrderController = async (req, res) => {
       order.status = "DocReady(F)";
     }
 
-    if (order.file !== "null") {
+    if (order.file && order.file !== "null") {
       order.status = "LabReady(F)";
     }
 
