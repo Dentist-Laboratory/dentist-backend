@@ -95,7 +95,7 @@ exports.editOrderController = async (req, res) => {
       order.status = "LabReady(F)";
     }
 
-    if (req.body.docReady) {
+    if (req.body.docReady && req.body.docReady === "true") {
       if (order.status !== "END(P)") {
         return res.status(401).json({ message: "order status not = END(P)" });
       }
