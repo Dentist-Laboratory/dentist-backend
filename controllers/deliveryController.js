@@ -4,7 +4,7 @@ const { User } = require("../models/user.model");
 async function getReadyOrders(req, res) {
   try {
     const orders = await Order.find({
-      status: ["DocReady(P)", "LabReady(P)"],
+      status: ["DocReady(P)", "LabReady(P)", "DocReady(F)", "LabReady(F)"],
     })
       .populate("doc_id")
       .populate("lab_id");
