@@ -8,10 +8,19 @@ async function getReadyOrders(req, res) {
     })
       .populate("doc_id")
       .populate("lab_id");
-    if (!orders) {
+
+    if (!orders || orders.length === 0) {
       return res.status(404).json("No Ready Orders");
     }
-    return res.status(200).json(orders);
+
+    let filteredOrders = [];
+    for (let order of orders) {
+      if (order.lab_id && order.lab_id.publicDelivery === true) {
+        filteredOrders.push(order);
+      }
+    }
+    
+    return res.status(200).json(filteredOrders);
   } catch (error) {
     console.log(error);
     return res.status(500).json("INTERNAL SERVER ERROR");

@@ -136,6 +136,7 @@ async function orderPaidController(req, res) {
       return res.status(404).json("Order Not Found");
     }
     order.paid = req.body.paid;
+    order.price = req.body.price;
     await order.save();
     return res.status(200).json(order);
   } catch (error) {

@@ -60,6 +60,7 @@ exports.createOrderController = async (req, res, next) => {
       image2: req.body.image2,
       file: req.body.file,
       video: req.body.video,
+      date: req.body.date,
     });
     if (req.body.file !== "null") {
       order.status = "UNDERWAY(P)";
