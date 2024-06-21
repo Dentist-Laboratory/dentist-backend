@@ -96,12 +96,12 @@ exports.editOrderController = async (req, res) => {
     //   order.status = "LabReady(F)";
     // }
 
-    // if (req.body.docReady && req.body.docReady === "true") {
-    //   if (order.status !== "END(P)") {
-    //     return res.status(401).json({ message: "order status not = END(P)" });
-    //   }
-    //   order.status = "DocReady(P)";
-    // }
+    if (req.body.docReady && req.body.docReady === "true") {
+      // if (order.status !== "END(P)") {
+      //   return res.status(401).json({ message: "order status not = END(P)" });
+      // }
+      order.status = "DocReady(P)";
+    }
 
     await order.save();
     return res.status(200).json(order);
